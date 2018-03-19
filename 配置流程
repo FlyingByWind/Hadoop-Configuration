@@ -1,4 +1,4 @@
-总结步骤如下： 
+步骤如下： 
 1、下载hadoop-2.6.4放于/usr/local下，下载Java1.7放于/usr/lib/jvm下 
 2、root下创建hadoop用户:useradd hadoop 给hadoop用户sudo权限:sudo vi /etc/sudoers 加入hadoop (ALL:ALL) ALL
     将hadoop-2.6.4文件权限设置为777,所属hadoop
