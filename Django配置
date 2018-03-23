@@ -1,0 +1,18 @@
+1、安装django
+   sudo apt-get install python-pip
+   sudo pip install django --upgrade 
+2、在/home/hadoop下创建django项目 django-admin.py startproject hello
+   在setting.py中加入公网ip ALLOWED_HOSTS=["106.15.184.136"]
+   vim /etc/nginx/sites-enable/default 修改Listen 81
+   vim /etc/nginx/sites-enable/hadoopX 
+   修改Listen 2003；
+       Server_name 106.15.184.136
+       location /{
+                   uwsgi_pass django;
+                   include /etc/nginx/uwsgi_params;
+                 }
+       upstrem django{
+          Server Unix:///home/hadoop/hadoopX/mysitesock
+       }
+3、启动django
+   uwsgi  --ini 文件名.ini
