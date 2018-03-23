@@ -1,0 +1,8 @@
+如果想将资源监控界面发布到外网，需要进行外网配置
+1、cd /etc/apache2
+   sudo vi apache2.conf  加入ServerName 106.14.112.86:80
+   cd /etc/apache2/sites-enabled
+   sudo vi 000_default.conf  
+   加入ServerName 106.14.112.86:80 DocumentRoot /var/www/html(网页文件目录地址)
+2、修改apache2的端口
+   sudo vi /etc/apache2/sites-available/000-default.conf将Virtual Host *=80改为Virtual Host *：1803
