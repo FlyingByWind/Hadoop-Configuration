@@ -1,0 +1,24 @@
+1、主节点安装gmetad、gmond、gweb；从节点安装gmond
+2、将ganglia文件复制到/var/www/html
+3、主节点配置gmetad，设置监控集群名和ip
+   sudo vi /etc/ganglia/gmetad.conf
+   data_source "hadoop" 192.168.1.2 192.168.1.3 192.168.1.4
+4、主节点和从节点配置gmond，设置发送终点的ip地址以及端口
+   sudo vi /etc/ganglia/gmond.conf
+   cluster{
+           name="hadoop"
+   }
+   udp_send_channel{
+           host=192.168.1.2 //主节点ip地址
+           port=8649
+           tt1=1
+   }
+   udp_recv_channel{
+           port=8649
+   }
+5、sudo /etc/init.d/ganglia-monitor restart 所有节点启动gmond进程
+   sudo /etc/init.d/gmetad restart 主节点启动gmetad进程
+   sudo /etc/init.d/apache2 restart 主节点启动apache2服务器
+6、浏览器输入192.168.1.3/hadoop
+   
+           
